@@ -5,7 +5,7 @@ export default function App() {
   const [isClick, setIsClick] = useState(false);
 
   async function fetchServerData() {
-    const res = await fetch("http://localhost:3000/api/v1/inventory");
+    const res = await fetch("/api/v1/inventory");
     const resData = await res.json();
     setData(resData.data);
     setIsClick(true);
