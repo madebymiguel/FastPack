@@ -1,6 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import { StatusCodes } from "http-status-codes";
-import { Error } from "../types/error";
+
+interface CustomError {
+  statusCode: number;
+  msg: string;
+}
 
 export default function errorHandlerMiddleware(
   err: any,
@@ -10,14 +14,14 @@ export default function errorHandlerMiddleware(
 ) {
   console.log(err);
 
-  let customError = {
+  let customError: CustomError = {
     statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
     msg: err.message || "Something Went Wrong Try Again Later",
   };
 
   if (err.name === "ValidationError") {
     customError.msg = Object.values(err.errors)
-      .map((item) => item.message)
+      .map((item: any) => item.message)
       .join(",");
     customError.statusCode = 400;
   }

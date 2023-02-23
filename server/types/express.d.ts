@@ -1,15 +1,24 @@
-export interface User {
-  name: string;
+// export interface User {
+//   userId: string;
+//   firstName: string;
+//   lastName: string;
+//   email: string;
+//   password: string;
+// }
+
+export interface UserPayload {
+  userId: string;
   email: string;
-  password: string;
 }
 
-declare namespace Express {
-  export interface Request {
-    user: User;
-  }
+declare global {
+  declare namespace Express {
+    export interface Request {
+      user: UserPayload;
+    }
 
-  export interface Response {
-    user: User;
+    export interface Response {
+      user: UserPayload;
+    }
   }
 }

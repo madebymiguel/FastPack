@@ -2,6 +2,11 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { UnauthenticatedError } from "../errors";
 
+export interface UserPayload {
+  userId: string;
+  email: string;
+}
+
 export default async function Authentication(
   req: Request,
   res: Response,
@@ -15,9 +20,16 @@ export default async function Authentication(
   const token = authHeader.split(" ")[1];
 
   try {
-    const payload = jwt.verify(token, `${process.env.JWT_SECRET}`);
+    const payload = jwt.verify(
+      token,
+      `${process.env.JWT_SECRET}`
+    ) as UserPayload;
 
-    req["user"] = { userId: payload["userId"], name: payload["name"] };
+    req["user"] = {
+      userId: payload["userId"],
+      email: payload["email"],
+    } as UserPayload;
+
     next();
   } catch (error) {
     throw new UnauthenticatedError("Authentication Invalid");

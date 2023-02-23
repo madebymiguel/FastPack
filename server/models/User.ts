@@ -3,18 +3,25 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export interface User {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   createJWT: () => string;
-  comparePassword: (userPassword: string) => boolean;
+  comparePassword: (userPassword: string) => Promise<boolean>;
 }
 
 const UserSchema = new Schema<User>({
-  name: {
+  firstName: {
     type: String,
-    required: [true, "Please Provide Name"],
-    minlength: 3,
+    required: [true, "Please Provide First Name"],
+    minlength: 2,
+    maxlength: 50,
+  },
+  lastName: {
+    type: String,
+    required: [true, "Please Provide Last Name"],
+    minlength: 2,
     maxlength: 50,
   },
   email: {
@@ -41,7 +48,7 @@ UserSchema.pre("save", async function (next) {
 
 UserSchema.methods.createJWT = function () {
   return jwt.sign(
-    { userId: this._id, name: this.name },
+    { userId: this._id, email: this.email, time: Date.now() },
     `${process.env.JWT_SECRET}`,
     {
       expiresIn: process.env.JWT_LIFETIME,
