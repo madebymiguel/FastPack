@@ -5,13 +5,13 @@ import Inventory from "../models/Inventory";
 
 export async function getAllInventoryItems(req: Request, res: Response) {
   const inventory = await Inventory.find({
-    createdBy: req["user"].userId,
+    createdBy: req.user.userId,
   });
   res.status(StatusCodes.OK).json({ inventory, count: inventory.length });
 }
 
 export async function createInventoryItem(req: Request, res: Response) {
-  req.body.createdBy = req["user"].userId;
+  req.body.createdBy = req.user.userId;
   const inventory = await Inventory.create(req.body);
   res.status(StatusCodes.CREATED).json({ inventory });
 }
@@ -36,15 +36,7 @@ export async function getInventoryItem(req: Request, res: Response) {
 
 export async function updateInventoryItem(req: Request, res: Response) {
   const {
-    body: {
-      name,
-      description,
-      category,
-      weight,
-      weightUnit,
-      quantity,
-      isConsumable,
-    },
+    body: { name, category, weight, weightUnit, quantity },
     user: { userId },
     params: { id: inventoryItemId },
   } = req;

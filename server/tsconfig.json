@@ -23,6 +23,5 @@
     "resolveJsonModule": true,
     "baseUrl": "."
   },
-  "exclude": ["node_modules"],
-  "files": ["types/express.d.ts"]
+  "exclude": ["node_modules"]
 }

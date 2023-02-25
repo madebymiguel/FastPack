@@ -25,10 +25,10 @@ export default async function Authentication(
       `${process.env.JWT_SECRET}`
     ) as UserPayload;
 
-    req["user"] = {
-      userId: payload["userId"],
-      email: payload["email"],
-    } as UserPayload;
+    req.user = {
+      userId: payload.userId,
+      email: payload.email,
+    };
 
     next();
   } catch (error) {
