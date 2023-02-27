@@ -1,20 +1,23 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ForgotPasswordForm from "./ForgotPasswordForm";
+import HomePage from "./HomePage";
+import LoginForm from "./LoginForm";
+import SignupForm from "./SignupForm";
+import NotFound from "./NotFound";
 
 export default function App() {
-  const [data, setData] = useState("");
-  const [isClick, setIsClick] = useState(false);
-
-  async function fetchServerData() {
-    const res = await fetch("/api/v1/inventory");
-    const resData = await res.json();
-    setData(resData.data);
-    setIsClick(true);
-  }
-
   return (
-    <div className="App">
-      <button onClick={fetchServerData}>Get Server Data</button>
-      {isClick ? <p>{data}</p> : <p>No Data</p>}
-    </div>
+    <Router>
+      <div id="page">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignupForm />} />
+          <Route path="/forgotpassword" element={<ForgotPasswordForm />} />
+          <Route path="/inventory" element={"InventoryPage"} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
