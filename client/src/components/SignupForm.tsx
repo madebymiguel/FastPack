@@ -9,6 +9,7 @@ import {
   InputRightElement,
   Stack,
   Button,
+  Link,
   Heading,
   Text,
   useColorModeValue,
@@ -18,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link as ReactRouterLink } from "react-router-dom";
 import fetchSignup from "../api/fetchSignup";
 
 export default function SignupForm() {
@@ -132,7 +133,7 @@ export default function SignupForm() {
               <Stack pt={4}>
                 <Text align={"center"}>
                   Already a user?{" "}
-                  <Link to="/login" color={"teal"}>
+                  <Link as={ReactRouterLink} to="/login" color={"teal"}>
                     Login
                   </Link>
                 </Text>

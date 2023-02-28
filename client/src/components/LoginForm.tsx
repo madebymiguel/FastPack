@@ -7,6 +7,7 @@ import {
   Checkbox,
   Stack,
   Button,
+  Link,
   Heading,
   Text,
   useColorModeValue,
@@ -16,7 +17,7 @@ import {
   AlertDescription,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link as ReactRouterLink } from "react-router-dom";
 import fetchLogin from "../api/fetchLogin";
 
 export default function LoginForm() {
@@ -55,7 +56,7 @@ export default function LoginForm() {
           <Heading fontSize={"4xl"}>Login to your account</Heading>
           <HStack spacing="1" justify="center">
             <Text color="muted">Don't have an account?</Text>
-            <Link to="/signup" color={"teal"}>
+            <Link as={ReactRouterLink} to="/signup" color={"teal"}>
               Sign-up
             </Link>
           </HStack>
@@ -83,7 +84,11 @@ export default function LoginForm() {
                   justify={"space-between"}
                 >
                   <Checkbox>Remember me</Checkbox>
-                  <Link to="/forgotpassword" color={"teal"}>
+                  <Link
+                    as={ReactRouterLink}
+                    to="/forgotpassword"
+                    color={"teal"}
+                  >
                     Forgot password?
                   </Link>
                 </Stack>

@@ -1,4 +1,4 @@
-import { Heading, Text, Button, Flex, Link } from "@chakra-ui/react";
+import { Heading, Text, Button, Flex } from "@chakra-ui/react";
 
 export default function NotFound() {
   return (
