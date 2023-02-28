@@ -5,8 +5,8 @@ import {
   Text,
   VStack,
   useBreakpointValue,
-  Link,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import HomePageImage from "../assets/HomePageImage.jpg";
 
 export default function WithBackgroundImage() {
@@ -45,7 +45,7 @@ export default function WithBackgroundImage() {
           <Stack direction={"row"}>
             <Button
               as={Link}
-              href="/signup"
+              to="/signup"
               bg={"orange.400"}
               rounded={"xl"}
               color={"black"}
@@ -55,7 +55,7 @@ export default function WithBackgroundImage() {
             </Button>
             <Button
               as={Link}
-              href="/login"
+              to="/login"
               bg={"teal"}
               rounded={"xl"}
               color={"white"}
