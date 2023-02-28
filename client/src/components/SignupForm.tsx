@@ -12,14 +12,13 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  Link,
   Alert,
   AlertIcon,
   AlertDescription,
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import fetchSignup from "../api/fetchSignup";
 
 export default function SignupForm() {
@@ -133,7 +132,7 @@ export default function SignupForm() {
               <Stack pt={4}>
                 <Text align={"center"}>
                   Already a user?{" "}
-                  <Link href="/login" color={"teal"}>
+                  <Link to="/login" color={"teal"}>
                     Login
                   </Link>
                 </Text>
