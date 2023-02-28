@@ -19,7 +19,8 @@ export async function register(
         httpOnly: true,
         maxAge: 8 * 60 * 60,
         path: "/",
-        sameSite: "none",
+        sameSite: "lax",
+        secure: true,
       })
     );
 
@@ -55,7 +56,8 @@ export async function login(req: Request, res: Response, next: NextFunction) {
         httpOnly: true,
         maxAge: 8 * 60 * 60,
         path: "/",
-        sameSite: "none",
+        sameSite: "lax",
+        secure: true,
       })
     );
 
@@ -73,7 +75,8 @@ export async function signoff(req: Request, res: Response, next: NextFunction) {
         httpOnly: true,
         maxAge: -1,
         path: "/",
-        sameSite: "none",
+        sameSite: "lax",
+        secure: true,
       })
     );
 
