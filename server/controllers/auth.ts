@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
+import cookie from "cookie";
 import { BadRequestError, UnauthenticatedError } from "../errors";
 import User from "../models/User";
 
@@ -11,9 +12,17 @@ export async function register(
   try {
     const user = await User.create({ ...req.body });
     const token = user.createJWT();
-    res
-      .status(StatusCodes.CREATED)
-      .json({ user: { email: user.email }, token });
+
+    res.setHeader(
+      "Set-Cookie",
+      cookie.serialize(`${process.env.COOKIE_NAME}`, token, {
+        httpOnly: true,
+        maxAge: 8 * 60 * 60,
+        sameSite: "strict",
+      })
+    );
+
+    res.status(StatusCodes.CREATED).json({ user: { email: user.email } });
   } catch (error) {
     next(error);
   }
@@ -38,8 +47,50 @@ export async function login(req: Request, res: Response, next: NextFunction) {
     }
 
     const token = user.createJWT();
+
+    res.setHeader(
+      "Set-Cookie",
+      cookie.serialize(`${process.env.COOKIE_NAME}`, token, {
+        httpOnly: true,
+        maxAge: 8 * 60 * 60,
+        sameSite: "strict",
+      })
+    );
+
     res.status(StatusCodes.OK).json({ user: { email: user.email }, token });
   } catch (error) {
     next(error);
+  }
+}
+
+export async function signoff(req: Request, res: Response, next: NextFunction) {
+  try {
+    res.setHeader(
+      "Set-Cookie",
+      cookie.serialize(`${process.env.COOKIE_NAME}`, "", {
+        httpOnly: true,
+        maxAge: -1,
+        sameSite: "strict",
+      })
+    );
+
+    res.status(StatusCodes.OK).json({ msg: "Successfully logged out" });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function getUserToken(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const cookies = cookie.parse(req.headers.cookie || "");
+  const token = cookies[`${process.env.COOKIE_NAME}`];
+
+  if (token) {
+    res.status(StatusCodes.OK).json({ token: token });
+  } else {
+    res.status(StatusCodes.UNAUTHORIZED).json({ msg: "Token does not exist" });
   }
 }
