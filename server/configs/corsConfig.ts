@@ -7,6 +7,7 @@ const allowedOrigins = [
 
 const options: cors.CorsOptions = {
   origin: allowedOrigins,
+  credentials: true,
 };
 
 export default options;
