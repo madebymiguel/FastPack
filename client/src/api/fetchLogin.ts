@@ -14,7 +14,6 @@ export default async function fetchLogin({ email, password }: fetchLoginProps) {
     headers: {
       "Content-Type": "application/json",
     },
-    credentials: "include",
     body: JSON.stringify(submissionData),
   });
 
