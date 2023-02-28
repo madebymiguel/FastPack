@@ -18,7 +18,7 @@ export async function register(
       cookie.serialize(`${process.env.COOKIE_NAME}`, token, {
         httpOnly: true,
         maxAge: 8 * 60 * 60,
-        sameSite: "strict",
+        sameSite: "lax",
       })
     );
 
@@ -53,7 +53,7 @@ export async function login(req: Request, res: Response, next: NextFunction) {
       cookie.serialize(`${process.env.COOKIE_NAME}`, token, {
         httpOnly: true,
         maxAge: 8 * 60 * 60,
-        sameSite: "strict",
+        sameSite: "lax",
       })
     );
 
@@ -70,7 +70,7 @@ export async function signoff(req: Request, res: Response, next: NextFunction) {
       cookie.serialize(`${process.env.COOKIE_NAME}`, "", {
         httpOnly: true,
         maxAge: -1,
-        sameSite: "strict",
+        sameSite: "lax",
       })
     );
 
