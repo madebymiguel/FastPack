@@ -79,5 +79,5 @@ export async function deleteInventoryItem(req: Request, res: Response) {
     throw new NotFoundError(`No job With ID ${inventoryItemId}`);
   }
 
-  res.status(StatusCodes.OK).send("Inventory Item Deleted");
+  res.status(StatusCodes.OK).json({ msg: "Inventory Item Deleted" });
 }

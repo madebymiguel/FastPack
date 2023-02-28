@@ -23,9 +23,10 @@ export default function InventoryItem({
   weightUnit,
   quantity,
 }: InventoryItemProps) {
-  const handleItemDelete = async (id: string) => {
-    deleteInventoryItem(id);
-    window.location.reload();
+  const handleItemDelete = async () => {
+    deleteInventoryItem(id).then(() => {
+      window.location.reload();
+    });
   };
 
   return (
@@ -59,7 +60,7 @@ export default function InventoryItem({
             quantity={quantity}
           />
           <CloseButton
-            onClick={() => handleItemDelete(id)}
+            onClick={handleItemDelete}
             aria-label="Delete Item"
             _hover={{ bg: "red.500", color: "white" }}
           />
