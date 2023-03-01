@@ -93,7 +93,7 @@ export default function AddInventoryItemModal() {
 
                   <Select name="weightUnit">
                     <option value="oz">oz</option>
-                    <option value="lbs">lbs</option>
+                    <option value="lb">lb</option>
                     <option value="g">g</option>
                     <option value="kg">kg</option>
                   </Select>

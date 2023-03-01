@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import Header from "./Header";
 import InventoryHeader from "./InventoryHeader";
 import InventoryCategory from "./InventoryCategory";
@@ -29,18 +29,26 @@ export default function InventoryPage() {
       <InventoryHeader />
 
       {!isFetching ? (
-        usedCategories.map((categoryName: string) => {
-          const inventoryCategory = inventory.filter((item) =>
-            categoryName.includes(item.category)
-          );
-          return (
-            <InventoryCategory
-              key={categoryName}
-              title={categoryName}
-              inventory={inventoryCategory}
-            />
-          );
-        })
+        inventory.length === 0 ? (
+          <Box>
+            <Text fontSize="xl" color="black">
+              No Inventory Items Yet. Click on Add New Item to get started!
+            </Text>
+          </Box>
+        ) : (
+          usedCategories.map((categoryName: string) => {
+            const inventoryCategory = inventory.filter((item) =>
+              categoryName.includes(item.category)
+            );
+            return (
+              <InventoryCategory
+                key={categoryName}
+                title={categoryName}
+                inventory={inventoryCategory}
+              />
+            );
+          })
+        )
       ) : (
         <Loading />
       )}
