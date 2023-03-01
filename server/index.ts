@@ -1,6 +1,9 @@
 import express, { Express } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import helmet from "helmet";
+import xss from "xss-clean";
+import rateLimiter from "express-rate-limit";
 import cookieParser from "cookie-parser";
 import corsOptions from "./configs/corsConfig";
 import connectDB from "./db/connectDB";
@@ -9,9 +12,7 @@ import notFoundMiddleware from "./middleware/not-found";
 import errorHandlerMiddleware from "./middleware/error-handler";
 import authRouter from "./routes/auth";
 import inventoryRouter from "./routes/inventory";
-import helmet from "helmet";
-import xss from "xss-clean";
-import rateLimiter from "express-rate-limit";
+import packListRouter from "./routes/packList";
 
 dotenv.config();
 
@@ -25,7 +26,7 @@ process.on("uncaughtException", function (error) {
 app.use(
   rateLimiter({
     windowMs: 15 * 60 * 1000,
-    max: 100,
+    max: 300,
   })
 );
 
@@ -39,6 +40,7 @@ app.use(xss());
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/inventory", authenticateUser, inventoryRouter);
+app.use("/api/v1/packlist", authenticateUser, packListRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
