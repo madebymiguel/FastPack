@@ -30,7 +30,7 @@ export default function InventoryPage() {
 
       {!isFetching ? (
         inventory.length === 0 ? (
-          <Box>
+          <Box p="24px" pl="48px">
             <Text fontSize="xl" color="black">
               No Inventory Items Yet. Click on Add New Item to get started!
             </Text>

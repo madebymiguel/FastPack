@@ -1,4 +1,4 @@
-import { Button, Flex, Input, useColorModeValue, Link } from "@chakra-ui/react";
+import { Button, Flex, Input, useColorModeValue } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 export default function PackListPageHeader() {
@@ -12,7 +12,7 @@ export default function PackListPageHeader() {
       bg={useColorModeValue("white", "gray.800")}
       color={useColorModeValue("gray.600", "white")}
     >
-      <Input placeholder="search" width="250px" />
+      <Input placeholder="search" mr="48px" />
       <Button as={ReactRouterLink} to="/packlist/new">
         New List
       </Button>

@@ -6,7 +6,6 @@ import {
   Stack,
   useColorModeValue,
   Heading,
-  Link,
   Menu,
   MenuButton,
   MenuList,

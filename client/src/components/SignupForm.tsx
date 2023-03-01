@@ -41,10 +41,8 @@ export default function SignupForm() {
 
     fetchSignup(submissionData).then((returnMessage) => {
       if (returnMessage.user) {
-        console.log("here");
         return navigate("/inventory");
       } else {
-        console.log("there");
         setErrorMessage(returnMessage.msg);
         setIsError(true);
       }

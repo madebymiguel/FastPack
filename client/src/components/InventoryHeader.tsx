@@ -12,7 +12,7 @@ export default function InventoryHeader() {
       bg={useColorModeValue("white", "gray.800")}
       color={useColorModeValue("gray.600", "white")}
     >
-      <Input placeholder="search" width="250px" />
+      <Input placeholder="search" mr="48px" />
       <AddInventoyItemModal />
     </Flex>
   );
