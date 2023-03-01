@@ -5,6 +5,7 @@ import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import NotFound from "./NotFound";
 import InventoryPage from "./InventoryPage";
+import PackListPage from "./PackListPage";
 
 export default function App() {
   return (
@@ -16,6 +17,11 @@ export default function App() {
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/forgotpassword" element={<ForgotPasswordForm />} />
           <Route path="/inventory" element={<InventoryPage />} />
+
+          <Route path="/packlist">
+            <Route index element={<PackListPage />} />
+          </Route>
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
