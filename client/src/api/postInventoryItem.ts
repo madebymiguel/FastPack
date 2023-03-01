@@ -9,8 +9,8 @@ export interface postInventoryItemProps {
   weightUnit: string;
   quantity: number;
   // For PackList
-  isWorn: null;
-  tripQuantity: null;
+  isWorn: boolean;
+  tripQuantity: number;
 }
 
 export default async function postInventoryItem({

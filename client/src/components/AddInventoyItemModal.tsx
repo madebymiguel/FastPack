@@ -43,8 +43,8 @@ export default function AddInventoryItemModal() {
       weightUnit: userInput.get("weightUnit") as string,
       isConsumable: isConsumable,
       quantity: userInput.get("quantity") as unknown as number,
-      isWorn: null,
-      tripQuantity: null,
+      isWorn: false,
+      tripQuantity: 1,
     };
 
     postInventoryItem(submissionData).then(() => {

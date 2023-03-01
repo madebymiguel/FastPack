@@ -8,6 +8,6 @@ export interface Inventory {
   weightUnit: string;
   quantity: number;
   // For PackList
-  isWorn: boolean | null;
-  tripQuantity: number | null;
+  isWorn: boolean;
+  tripQuantity: number;
 }
