@@ -6,6 +6,8 @@ import SignupForm from "./SignupForm";
 import NotFound from "./NotFound";
 import InventoryPage from "./InventoryPage";
 import PackListPage from "./PackListPage";
+import NewPackListPage from "./NewPackListPage";
+import PackList from "./PackList";
 
 export default function App() {
   return (
@@ -20,6 +22,8 @@ export default function App() {
 
           <Route path="/packlist">
             <Route index element={<PackListPage />} />
+            <Route path="new" element={<NewPackListPage />} />
+            <Route path=":list" element={<PackList />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />
