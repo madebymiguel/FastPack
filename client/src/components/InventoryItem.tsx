@@ -60,7 +60,7 @@ export default function InventoryItem({
             quantity={quantity}
           />
 
-          <Tooltip label="Delete List" aria-label="Delete List">
+          <Tooltip label="Delete Item" aria-label="Delete Item">
             <CloseButton
               onClick={handleItemDelete}
               _hover={{ bg: "red.500", color: "white" }}

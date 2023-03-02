@@ -36,7 +36,7 @@ export default function PackListHeader({
       </Heading>
       <Input placeholder="search" ml="32px" mr="16px" w="100%" />
       <HStack spacing="16px">
-        <Tooltip label="Update Item" aria-label="Update Item">
+        <Tooltip label="Update List" aria-label="Update List">
           <IconButton
             // onClick={onOpen}
             aria-label="Update Item"
