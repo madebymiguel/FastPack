@@ -1,4 +1,4 @@
-import { Tr, Td, CloseButton, HStack } from "@chakra-ui/react";
+import { Tr, Td, CloseButton, HStack, Tooltip } from "@chakra-ui/react";
 import UpdateInventoryItemModal from "./UpdateInventoryItemModal";
 import deleteInventoryItem from "../api/deleteInventoryItem";
 
@@ -59,11 +59,13 @@ export default function InventoryItem({
             isConsumable={isConsumable}
             quantity={quantity}
           />
-          <CloseButton
-            onClick={handleItemDelete}
-            aria-label="Delete Item"
-            _hover={{ bg: "red.500", color: "white" }}
-          />
+
+          <Tooltip label="Delete List" aria-label="Delete List">
+            <CloseButton
+              onClick={handleItemDelete}
+              _hover={{ bg: "red.500", color: "white" }}
+            />
+          </Tooltip>
         </HStack>
       </Td>
     </Tr>

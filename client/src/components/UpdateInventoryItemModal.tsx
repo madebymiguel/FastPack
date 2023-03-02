@@ -20,6 +20,7 @@ import {
   FormLabel,
   IconButton,
   Switch,
+  Tooltip,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import updateInventoryItem from "../api/updateInventoryItem";
@@ -76,11 +77,13 @@ export default function UpdateInventoryItemModal({
 
   return (
     <>
-      <IconButton
-        onClick={onOpen}
-        aria-label="Update Item"
-        icon={<EditIcon />}
-      />
+      <Tooltip label="Update Item" aria-label="Update Item">
+        <IconButton
+          onClick={onOpen}
+          aria-label="Update Item"
+          icon={<EditIcon />}
+        />
+      </Tooltip>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
