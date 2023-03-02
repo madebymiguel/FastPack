@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "./Header";
 import Loading from "./Loading";
 import PackListCategory from "./PackListCategory";
@@ -8,11 +8,15 @@ import { PackListInventory } from "../types/PackListInventory";
 import fetchPackList from "../api/fetchPackList";
 import NewPackListWeightBreakDown from "./NewPackListWeightBreakDown";
 import handleConversion from "../utils/handleConversion";
+import PackListHeader from "./PackListHeader";
+import deletePackList from "../api/deletePackList";
 
 export default function PackList() {
   const [isFetching, setFetching] = useState<boolean>(true);
   const [packList, setpackList] = useState<PackListInventory | null>(null);
   const [usedCategories, setUsedCategories] = useState<string[]>([]);
+  const [packListName, setPackListName] = useState<string>("");
+  const [packListId, setPackListId] = useState<string>("");
 
   const [unitType, setUnitType] = useState<string>("oz");
   const [base, setBase] = useState<number>(0);
@@ -22,11 +26,15 @@ export default function PackList() {
 
   const { list } = useParams<{ list: string }>();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (list) {
       fetchPackList(list).then((data) => {
         const fetchedPackList: PackListInventory = data.packListItem;
         setpackList(fetchedPackList);
+        setPackListName(fetchedPackList.listName);
+        setPackListId(fetchedPackList._id);
 
         const inventory = fetchedPackList.inventory;
         setUsedCategories([...new Set(inventory.map((item) => item.category))]);
@@ -73,9 +81,19 @@ export default function PackList() {
     setTotal(value);
   };
 
+  const handleItemDelete = async (id: string) => {
+    deletePackList(id);
+    navigate("/packlist");
+  };
+
   return (
     <Box>
       <Header />
+      <PackListHeader
+        packListId={packListId}
+        packListName={packListName}
+        handleItemDelete={handleItemDelete}
+      />
       <NewPackListWeightBreakDown
         base={base}
         consumable={consumable}
