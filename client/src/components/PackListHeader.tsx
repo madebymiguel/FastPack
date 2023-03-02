@@ -38,6 +38,7 @@ export default function PackListHeader({
       <HStack spacing="16px">
         <Tooltip label="Update List" aria-label="Update List">
           <IconButton
+            isDisabled
             // onClick={onOpen}
             aria-label="Update Item"
             icon={<EditIcon />}
