@@ -40,13 +40,19 @@ export default function InventoryCategory({
           </AccordionButton>
         </h2>
         <AccordionPanel pb={4}>
-          <TableContainer>
+          <TableContainer overflowX="auto">
             <Table variant="simple">
               <Thead>
                 <Tr>
-                  {INVENTORY_TABLE_HEADERS.map((header: string) => {
-                    return <Th>{header}</Th>;
-                  })}
+                  {INVENTORY_TABLE_HEADERS.map(
+                    (header: { label: string; width: string }) => {
+                      return (
+                        <Th key={header.label} width={header.width}>
+                          {header.label}
+                        </Th>
+                      );
+                    }
+                  )}
                 </Tr>
               </Thead>
               <Tbody>

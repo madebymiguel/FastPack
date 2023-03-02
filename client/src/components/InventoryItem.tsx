@@ -1,6 +1,7 @@
 import { Tr, Td, CloseButton, HStack, Tooltip } from "@chakra-ui/react";
 import UpdateInventoryItemModal from "./UpdateInventoryItemModal";
 import deleteInventoryItem from "../api/deleteInventoryItem";
+import { INVENTORY_TABLE_HEADERS } from "../variables/Variables";
 
 export interface InventoryItemProps {
   id: string;
@@ -31,23 +32,30 @@ export default function InventoryItem({
 
   return (
     <Tr>
-      <Td pt="4px" pb="4px">
+      <Td width={INVENTORY_TABLE_HEADERS[0].width} pt="4px" pb="4px">
         {name}
       </Td>
-      <Td pt="4px" pb="4px">
+      <Td width={INVENTORY_TABLE_HEADERS[1].width} pt="4px" pb="4px">
         {description}
       </Td>
-      <Td pt="4px" pb="4px">
+      <Td width={INVENTORY_TABLE_HEADERS[2].width} pt="4px" pb="4px">
         {isConsumable ? "Yes" : "No"}
       </Td>
-      <Td pt="4px" pb="4px">
+      <Td width={INVENTORY_TABLE_HEADERS[3].width} pt="4px" pb="4px">
         {weight} {weightUnit}
       </Td>
-      <Td pt="4px" pb="4px">
+      <Td width={INVENTORY_TABLE_HEADERS[4].width} pt="4px" pb="4px">
         {quantity}
       </Td>
 
-      <Td pt="4px" pb="4px" pr="8px" w="40px" h="40px">
+      <Td
+        width={INVENTORY_TABLE_HEADERS[5].width}
+        pt="4px"
+        pb="4px"
+        pr="8px"
+        w="40px"
+        h="40px"
+      >
         <HStack>
           <UpdateInventoryItemModal
             id={id}

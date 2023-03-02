@@ -1,4 +1,5 @@
 import { Td, Tr } from "@chakra-ui/react";
+import { PACK_LIST_TABLE_HEADERS } from "../variables/Variables";
 
 export interface PackListItemProps {
   name: string;
@@ -20,23 +21,23 @@ export default function PackListItem({
   tripQuantity,
 }: PackListItemProps) {
   return (
-    <Tr justifyContent="space-between">
-      <Td pt="4px" pb="4px">
+    <Tr key={name}>
+      <Td width={PACK_LIST_TABLE_HEADERS[0].width} pt="4px" pb="4px">
         {name}
       </Td>
-      <Td pt="4px" pb="4px">
+      <Td width={PACK_LIST_TABLE_HEADERS[1].width} pt="4px" pb="4px">
         {description}
       </Td>
-      <Td pt="4px" pb="4px">
+      <Td width={PACK_LIST_TABLE_HEADERS[2].width} pt="4px" pb="4px">
         {isConsumable ? "Yes" : "No"}
       </Td>
-      <Td pt="4px" pb="4px">
+      <Td width={PACK_LIST_TABLE_HEADERS[3].width} pt="4px" pb="4px">
         {isWorn ? "Yes" : "No"}
       </Td>
-      <Td pt="4px" pb="4px">
+      <Td width={PACK_LIST_TABLE_HEADERS[4].width} pt="4px" pb="4px">
         {weight} {weightUnit}
       </Td>
-      <Td>{tripQuantity}</Td>
+      <Td width={PACK_LIST_TABLE_HEADERS[5].width}>{tripQuantity}</Td>
     </Tr>
   );
 }

@@ -37,13 +37,19 @@ export default function NewPackListCategory({
           {title}
         </Heading>
       </Box>
-      <TableContainer>
+      <TableContainer overflowX="auto">
         <Table variant="simple">
           <Thead>
             <Tr>
-              {PACK_LIST_TABLE_HEADERS.map((header: string) => {
-                return <Th>{header}</Th>;
-              })}
+              {PACK_LIST_TABLE_HEADERS.map(
+                (header: { label: string; width: string }) => {
+                  return (
+                    <Th key={header.label} width={header.width}>
+                      {header.label}
+                    </Th>
+                  );
+                }
+              )}
             </Tr>
           </Thead>
           <Tbody>

@@ -141,7 +141,7 @@ export default function NewPackListPage() {
           unitType={unitType}
           handleUnitType={handleUnitType}
         />
-        <Box overflowY="auto">
+        <Box overflowY="auto" h="75vh">
           {inventory !== null &&
             usedCategories.map((categoryName: string) => {
               const selectedFilterInventory = selectedInventory.filter((item) =>

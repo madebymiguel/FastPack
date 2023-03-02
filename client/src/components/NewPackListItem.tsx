@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Inventory } from "../types/Inventory";
+import { PACK_LIST_TABLE_HEADERS } from "../variables/Variables";
 
 export interface NewPackListItemProps {
   id: string;
@@ -55,16 +56,16 @@ export default function NewPackListItem({
 
   return (
     <Tr justifyContent="space-between">
-      <Td pt="4px" pb="4px">
+      <Td width={PACK_LIST_TABLE_HEADERS[0].width} pt="4px" pb="4px">
         {name}
       </Td>
-      <Td pt="4px" pb="4px">
+      <Td width={PACK_LIST_TABLE_HEADERS[1].width} pt="4px" pb="4px">
         {description}
       </Td>
-      <Td pt="4px" pb="4px">
+      <Td width={PACK_LIST_TABLE_HEADERS[2].width} pt="4px" pb="4px">
         {isConsumable ? "Yes" : "No"}
       </Td>
-      <Td pt="4px" pb="4px">
+      <Td width={PACK_LIST_TABLE_HEADERS[3].width} pt="4px" pb="4px">
         <FormControl display="flex" alignItems="center" m="16px" ml="0px">
           <Switch
             name="isWorn"
@@ -75,10 +76,10 @@ export default function NewPackListItem({
           />
         </FormControl>
       </Td>
-      <Td pt="4px" pb="4px">
+      <Td width={PACK_LIST_TABLE_HEADERS[4].width} pt="4px" pb="4px">
         {weight} {weightUnit}
       </Td>
-      <Td>
+      <Td width={PACK_LIST_TABLE_HEADERS[5].width}>
         <FormControl>
           <NumberInput
             min={1}
