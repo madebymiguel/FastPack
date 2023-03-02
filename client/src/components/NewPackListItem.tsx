@@ -68,6 +68,7 @@ export default function NewPackListItem({
       <Td width={PACK_LIST_TABLE_HEADERS[3].width} pt="4px" pb="4px">
         <FormControl display="flex" alignItems="center" m="16px" ml="0px">
           <Switch
+            disabled={isConsumable}
             name="isWorn"
             size="md"
             colorScheme={"teal"}

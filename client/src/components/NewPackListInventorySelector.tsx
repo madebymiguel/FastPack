@@ -1,4 +1,4 @@
-import { Box, Heading, Input, VStack } from "@chakra-ui/react";
+import { Box, Heading, Input, Spacer, VStack } from "@chakra-ui/react";
 import { Inventory } from "../types/Inventory";
 import { SelectorItem } from "./SelectorItem";
 
@@ -18,29 +18,25 @@ export default function PackListInventorySelector({
   handleInventorySelector,
 }: PackListInventorySelectorProps) {
   return (
-    <Box>
-      <VStack
-        spacing={4}
-        boxShadow="base"
-        bg="gray.100"
-        p={2}
-        overflowY="auto"
-        h="93vh"
-      >
+    <Box boxShadow="base" bg="gray.100">
+      <VStack p={2}>
         <Heading as="h2" size="md">
           Inventory
         </Heading>
-        <Input placeholder="Search Inventory" />
-        {inventory.map((item: Inventory) => {
-          return (
-            <SelectorItem
-              selectedInventory={selectedInventory}
-              inventoryItem={item}
-              handleInventorySelector={handleInventorySelector}
-            />
-          );
-        })}
+        <Input placeholder="Search Inventory" bg="white" />
+        <VStack overflowY="auto" h="82vh">
+          {inventory.map((item: Inventory) => {
+            return (
+              <SelectorItem
+                selectedInventory={selectedInventory}
+                inventoryItem={item}
+                handleInventorySelector={handleInventorySelector}
+              />
+            );
+          })}
+        </VStack>
       </VStack>
+      <Spacer h="16px" />
     </Box>
   );
 }
