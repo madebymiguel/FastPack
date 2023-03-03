@@ -56,6 +56,7 @@ export default function NewPackListCategory({
             {inventory.map((item: Inventory) => {
               return (
                 <NewPackListItem
+                  key={item._id}
                   id={item._id}
                   name={item.name}
                   description={item.description}

@@ -47,6 +47,7 @@ export default function PackListCategory({
             {inventory.map((item: Inventory) => {
               return (
                 <PackListItem
+                  key={item._id}
                   name={item.name}
                   description={item.description}
                   isConsumable={item.isConsumable}

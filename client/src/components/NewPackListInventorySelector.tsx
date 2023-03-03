@@ -28,6 +28,7 @@ export default function PackListInventorySelector({
           {inventory.map((item: Inventory) => {
             return (
               <SelectorItem
+                key={item._id}
                 selectedInventory={selectedInventory}
                 inventoryItem={item}
                 handleInventorySelector={handleInventorySelector}

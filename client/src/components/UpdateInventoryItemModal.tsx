@@ -109,8 +109,8 @@ export default function UpdateInventoryItemModal({
                     placeholder="Select Option"
                     defaultValue={category}
                   >
-                    {ITEM_CATEGORY.map((category) => {
-                      return <option>{category}</option>;
+                    {ITEM_CATEGORY.map((category, index) => {
+                      return <option key={index}>{category}</option>;
                     })}
                   </Select>
                 </Flex>

@@ -149,6 +149,7 @@ export default function NewPackListPage() {
               );
               return (
                 <NewPackListCategory
+                  key={categoryName}
                   title={categoryName}
                   inventory={selectedFilterInventory}
                   handleInventoryUpdate={handleInventoryUpdate}

@@ -77,8 +77,8 @@ export default function AddInventoryItemModal() {
                 <FormLabel>Category</FormLabel>
                 <Flex mb="2">
                   <Select name="category" placeholder="Select Option">
-                    {ITEM_CATEGORY.map((category) => {
-                      return <option>{category}</option>;
+                    {ITEM_CATEGORY.map((category, index) => {
+                      return <option key={index}>{category}</option>;
                     })}
                   </Select>
                 </Flex>
