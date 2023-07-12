@@ -34,6 +34,13 @@ npm i && made dev
 - bcryptjs
 - cookie
 
+## Live Demo
+
+A live demo is currently being hosted on Render.com
+
+- [FrontEnd](https://fastpack.onrender.com/)
+- [BackEnd](https://fastpack-api.onrender.com/)
+
 ## Features include:
 
 - Signup and login pages/routes. Token saved in cookie.
